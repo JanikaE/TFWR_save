@@ -28,3 +28,17 @@ def clear_and_till():
 				till()
 			move(North)
 		move(East)
+		
+def copy(list):
+	result = []
+	for i in range(len(list)):
+		item = list[i] 
+		result.append(item)
+	return result
+	
+def reverse(list):
+	result = []
+	n = len(list)
+	for i in range(n):
+		result.append(list[n - i - 1])
+	return result
