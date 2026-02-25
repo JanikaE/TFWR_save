@@ -3,7 +3,8 @@ import Plant
 import Pumpkin
 import Cactus
 import Maze
-target = "cactus_m"
+import Dinosaur
+target = "dinosaur"
 
 Helper.move_to(0,0)
 if (target == "tree"):
@@ -19,6 +20,6 @@ if (target == "cactus_m"):
 if (target == "sunflower"):
 	Plant.Sunflower()
 if (target == "dinosaur"):
-	Plant.Dinosaur()
+	Dinosaur.Dinosaur()
 if (target == "maze"):
 	Maze.Maze()
