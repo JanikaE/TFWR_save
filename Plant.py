@@ -1,12 +1,12 @@
 import Helper
 n = get_world_size()
 
-# 草\树\萝卜
+# 单无人机
 def Tree():
 	dict = {}	
 	while(True):
-		for i in range(n):
-			for j in range(n):
+		for _ in range(n):
+			for _ in range(n):
 				x = get_pos_x()
 				y = get_pos_y()
 				if (can_harvest()):
@@ -23,3 +23,20 @@ def Tree():
 				move(North)
 			move(East)
 
+# 32无人机
+def Tree_M():
+	def Plant():
+		while (True):
+			com = get_companion()
+			Helper.move_to(com[1][0], com[1][1])
+			if (can_harvest()):
+				harvest()
+			entity = com[0]
+			if (entity == Entities.Grass and get_ground_type() == Grounds.Soil or entity != Entities.Grass and get_ground_type() == Grounds.Grassland):
+				till()
+			plant(entity)
+	for _ in range(n - 1):
+		spawn_drone(Plant)
+		move(East)
+	Plant()
+		
