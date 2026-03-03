@@ -41,7 +41,7 @@ def Pumpkin():
 						move(South)
 			harvest()
 			
-def Pumpkin_F():
+def Pumpkin_Fertilizer():
 	n = 6
 	while(True):
 		for i in range(n):
@@ -66,3 +66,29 @@ def Pumpkin_F():
 				move(East)
 		harvest()
 		Helper.move_to(0,0)
+
+def Pumpkin_M_Fertilizer():
+	n = get_world_size()
+	def Plant():
+		for _ in range(n):
+			if (get_ground_type() == Grounds.Grassland):
+				till()
+			while(get_water() < 0.75):
+				use_item(Items.Water)
+			while(True):
+				plant(Entities.Pumpkin)
+				use_item(Items.Fertilizer)
+				if (can_harvest() == True):
+					break
+		move(North)
+	while (True):
+		Helper.move_to(0,0)
+		finishList = []
+		for _ in range(n-1):
+			finishList.append(spawn_drone(Plant))
+			move(East)
+		Plant()
+		for i in range(n-1):
+			if (finishList[i] != None):
+				wait_for(finishList[i])			
+		harvest()
