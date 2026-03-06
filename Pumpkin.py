@@ -73,14 +73,12 @@ def Pumpkin_M_Fertilizer():
 		for _ in range(n):
 			if (get_ground_type() == Grounds.Grassland):
 				till()
-			while(get_water() < 0.75):
-				use_item(Items.Water)
 			while(True):
 				plant(Entities.Pumpkin)
 				use_item(Items.Fertilizer)
 				if (can_harvest() == True):
 					break
-		move(North)
+			move(North)
 	while (True):
 		Helper.move_to(0,0)
 		finishList = []
